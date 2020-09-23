@@ -1,0 +1,120 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red0\green0\blue255;
+}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c100000;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15580\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+	\
+	Class 7\
+\
+\
+	- Catkin building tool \
+		Pre- requisites: \
+			1- go to catkin_ws (Created during the installation of turtlebot3) \
+			2- delete the folders devel and build. \
+		-$> catkin build\
+			0- cd $HOME/catkin_ws\
+			1- execute catkin build.\
+			2- describe carefully the process.\
+		-$> catkin config\
+			0- cd $HOME/catkin_ws\
+			1- execute command \'91catkin config\'92\
+			2.1- Describe each of the entries. \
+			2.2- What can you find in the logs folder?  \
+			3- cd $HOME\
+			4- execute catkin config\
+			5- Describe each of the entries. \
+			6- Compare the outputs of points 2 and 5. \
+		-$> catkin list\
+			0- cd $HOME/catkin_ws\
+			1- execute command \'91catkin list\'92\
+			2- describe the output\
+			3- Using catkin list \'97help:\
+				1- list the package dependancies\
+				2- describe the output\
+				3- What do you think is the difference in between build_depend and run_depend? \
+				4- What are the dependancies of turtlebot3_navigation\
+				5- What packages are built using python? and cpp?\
+		-$> catkin create \
+			0- cd $HOME/catkin_ws/src\
+			1- using catkin create pkg \'97help,\
+				1- create an example package with the following details\
+					- package name \'93example\'94\
+					- description \'93this is an example for learning catkin\'92s package\'94\
+					- author \'93your.email@isen\'94 \
+					- version 0.0.2\
+					- ros distribution kinetic, melodic, lunar\
+					- this package must depend on rospy\
+				2- Build this package by using catkin build example. \
+					- How many packages is this command building? \
+				3- Use catkin list to list the dependancies of your new package\
+					- Why is rospy a run and build dependancy?\
+				4- What can you find in CMakeLists.txt?\
+				5- What can you find in package.xml?\
+\
+		Write a 1 to 3  lines conclusion about catkin. What is it about?\
+\
+	-RosPy \
+	1-\
+		- What is the relationship in between a program in ros and a node?\
+		- Follow the tutorial https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29\
+		- Explain the main differences between the publisher and the subscriber needed code\
+			- Why the publisher has a loop and the subscriber does not? \
+			- What happens when the subscriber node receives a message? \
+	2-\
+		- Startup a turtlebot burger. \
+		- Use rostopic command for detecting which topic is the laser\
+		- Use rostopic command for learning the message type of the topic\
+		- Use rosmsg command for understanding the message used.\
+		- use rostopic to learn the publishing rate of the laser topic. \
+		- What information is available? What can you do with it? \
+		- Draw a small coordinate system, for explaining what you could do with \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f1\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+			float32\'a0angle_min\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf4 #\'a0start\'a0angle\'a0of\'a0the\'a0scan\'a0[rad]\cf2 \
+			float32\'a0angle_max\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf4 #\'a0end\'a0angle\'a0of\'a0the\'a0scan\'a0[rad]\cf2 \
+			float32\'a0angle_increment\'a0\'a0\cf4 #\'a0angular\'a0distance\'a0between\'a0measurements\'a0[rad]\
+\cf2 			float32[]\'a0ranges\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf4 #\'a0range\'a0data\'a0[m]\'a0(Note:\'a0values\'a0<\'a0range_min\'a0or\'a0>\'a0range_max\'a0should\'a0be\'a0discarded)
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 		- Write a node that:\
+			1- subscribes to the laser topic\
+			2- publishes a topic named \'91closerPoint\'92  type Pose (geometry_msgs/Pose) with the closer point from the robot and it respective angle. \
+			3- publishes a \'91emergency\'92 type String (std_msgs/String) saying \'91STOOOOOP\'92 when the closer point is less than  10 cm. \
+\
+	3- 	\
+		-Follow the tutorial https://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29\
+		-What is (to your understanding) the difference in between a service and a topic?\
+		-Modify the position publishing node to implement a service named \'91shouldStop\'92 that responds true or false, according to the same policy as the topic \
+		-BRainstorm, what you would implement with services? and with topics? \
+\
+\
+	RosLaunch- \
+	1	- Follow the tutorial https://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch, section 2.2 (Roslaunch) \
+	2	- What is the usage of roslaunch? \
+	3	- create a launch file for starting the node. \
+	4	- modify the launch file for starting not only the node, but also to start rviz\
+	5	- find the launch file turtlebot3_core.launch, describe briefly what it does. \
+\
+	Rviz-\
+	1	-add a new component for visualising the closer pose to the robot. \
+	2	-enumerate the different components available in rviz.\
+x\
+	\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
